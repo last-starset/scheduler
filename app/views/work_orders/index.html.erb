@@ -1,0 +1,29 @@
+<div class="schedule-container" align="center">
+<div data-controller="schedule" class="schedule"  border="5" cellspacing="0" >
+     <div class="cell" style="grid-column: 1;"><br>
+     <b>Time</b>
+     </div>
+     
+     <% for a in 1..@technicians.count %>
+        <div  style="position: relative" class="cell"><br>
+        <b><%=@technicians.find_by(id: a).name %></b>
+        <% @work_orders.where("technician_id = ?", a).each do |single|%>
+        <% unless single.nil?%>
+                    <%= render "work_order_block", work_order: single%>
+                <% end %>
+        <% end %>
+     </div>
+     <% end %>
+   
+    <% for a in 0..23 %>
+        <div style="grid-column: 1;" class="cell" data-action="click->schedule#popup">
+        <b><%= a %>:00</b>
+        </div>
+        <% @technicians.each do |technician| %>
+            <div data-action="click->schedule#popup" class="cell", data-schedule-technician-param=<%=technician.name%> data-schedule-time-param=<%=@free_time_array.at(technician.id).at(a)%>>
+            </div>
+            <% end %>
+    <% end %>
+    </div>
+</div>
+

@@ -1,0 +1,12 @@
+<% unless work_order.nil? %>
+<% location = @locations.find_by(id: work_order.location_id) %>
+<% timespan = (work_order.time.to_i().modulo(86400) ) * 54 / 3600 + 54 %>
+
+<%= content_tag :div, class: "work-order", 
+style: "position: absolute; width: 174px; height: #{work_order.duration * 54 / 60}px; top: #{timespan}px;" do -%>
+        <%= location.name %>,
+        <%= location.city %><br>
+        Time: <%= work_order.time.strftime("%H:%M") %>
+        Price: $<%= work_order.price %>
+<% end -%>
+<% end %>

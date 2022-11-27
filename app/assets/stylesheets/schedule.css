@@ -1,0 +1,39 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(24, 1fr);
+}
+
+.work-order {
+    background-color: green;
+    border-color: black;
+    border: 2px solid;
+    font-weight: bold;
+}
+
+* {
+    background-color: lightgray;
+}
+
+.schedule {
+    display: grid;
+    grid-template-columns: repeat(5, 180px);
+    grid-template-rows: repeat(24, 54px);
+    justify-items: center;
+    grid-auto-flow: row;
+    border: 0px black solid;
+    align-content: center;
+    row-gap: 0px;
+    column-gap: 0px;
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+.cell {
+    border: 2px black solid;
+    width: 180px;
+    height: 50px;
+    margin: 0px;
+    padding: 1px;
+}
