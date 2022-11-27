@@ -5,7 +5,7 @@
 
 * Database creation & Initialization
 
-Running the task `rake setup_all` will both migrate the database and seed the database from the csvs, included in the repo. It first runs `db:migrate` and then proceeds to run the task `seed_from_csv`.
+Running the task `rake seed_from_csv` will drop the existing database, migrate the database and seed the database from the csvs, included in the repo. It first runs `db:drop` and `db:migrate` to avoid any issues with already having the data stored.
 
 * Services (job queues, cache servers, search engines, etc.)
 

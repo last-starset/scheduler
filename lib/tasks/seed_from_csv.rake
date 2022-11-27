@@ -1,9 +1,7 @@
 require 'csv'
-task :setup_all do
-    Rake::Task['db:migrate'].invoke 
-    Rake::Task['seed_from_csv'].invoke
-end
 task :seed_from_csv => [ :environment ] do
+    Rake::Task['db:drop'].invoke
+    Rake::Task['db:migrate'].invoke 
     CSV.foreach(Rails.root.join('lib/seeds/locations.csv'), headers: true) do |row|
         Location.create({
             id: row[0],
