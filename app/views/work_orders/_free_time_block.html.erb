@@ -1,0 +1,7 @@
+<% timespan_start = (time_block.at(0) ) * 54 / 60 + 54 %>
+<% timespan_duration = (time_block.at(2) * 54 / 60) %>
+
+<div class="time-block", data-action="click->schedule#popup", 
+    style="position: absolute; width: 174px; height: <%=timespan_duration%>px; top: <%=timespan_start%>px;"
+    data-schedule-technician-param=<%=technician.name%> data-schedule-time-param=<%= time_block.at(2)%>> 
+</div>

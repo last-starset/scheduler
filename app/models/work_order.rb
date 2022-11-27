@@ -24,22 +24,7 @@ class WorkOrder < ApplicationRecord
         end
         first_time_in_minutes = work_order_time_to_minutes(work_orders.last) + work_orders.last.duration
         free_times_ary << [first_time_in_minutes, MINUTES_IN_DAY, MINUTES_IN_DAY - first_time_in_minutes]
-        list_free_times = Array.new(0)
-        found_flag = false
-        for a in 0..23 do 
-            found_flag = false
-            free_times_ary.each do |single| 
-                if(single.at(0) <= a * 60 && single.at(1) >= a * 60) 
-                    list_free_times << single.at(2)
-                    found_flag = true
-                    break
-                end
-            end
-            unless found_flag 
-                list_free_times << 0
-            end
-        end
-        return list_free_times
+        return free_times_ary
     end
 
     private 

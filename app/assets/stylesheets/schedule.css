@@ -11,6 +11,10 @@
     font-weight: bold;
 }
 
+.time-block {
+    opacity: 0;
+}
+
 * {
     background-color: lightgray;
 }
